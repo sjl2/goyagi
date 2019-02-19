@@ -103,6 +103,14 @@
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:8ab158f5705bf6ab98d8b9384dc7b5ad46e7ae3babc8769d4d4c9bd1de2915ba"
+  name = "github.com/robinjoseph08/go-pg-migrations"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "7597cf926698d09edb57a4509dab2c1163c95f07"
+  version = "v0.1.2"
+
+[[projects]]
   digest = "1:6112a5eaec2ec65df289ccbb7a730aaf03e3c5cce6c906d367ccf9b7ac567604"
   name = "github.com/rs/zerolog"
   packages = [
@@ -176,6 +184,8 @@
     "github.com/go-pg/pg",
     "github.com/labstack/echo",
     "github.com/lob/logger-go",
+    "github.com/pkg/errors",
+    "github.com/robinjoseph08/go-pg-migrations",
     "github.com/stretchr/testify/assert",
     "github.com/stretchr/testify/require",
   ]
