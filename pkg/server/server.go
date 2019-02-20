@@ -22,6 +22,9 @@ func New(app application.App) *http.Server {
 
     e.Binder = binder.New()
 
+	// Register the logger middleware after we set our custom binder
+	e.Use(logger.Middleware())
+
     health.RegisterRoutes(e)
     movies.RegisterRoutes(e, app)
 
