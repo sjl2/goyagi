@@ -44,3 +44,7 @@
 [[constraint]]
   name = "gopkg.in/go-playground/validator.v9"
   version = "9.27.0"
+
+[[constraint]]
+  name = "github.com/getsentry/raven-go"
+  version = "0.2.0"
