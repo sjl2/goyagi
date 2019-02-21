@@ -3,6 +3,7 @@ package errors
 import (
     "net/http"
 
+    "github.com/getsentry/raven-go"
     "github.com/labstack/echo"
     loggergo "github.com/lob/logger-go"
     "github.com/sjl2/goyagi/pkg/application"
@@ -38,6 +39,14 @@ func (h *handler) handleError(err error, c echo.Context) {
         code = he.Code
         msg = http.StatusText(code)
     }
+
+	if code == http.StatusInternalServerError {
+		stacktrace := raven.NewException(err, raven.GetOrNewStacktrace(err, 0, 2, nil))
+		httpContext := raven.NewHttp(c.Request())
+		packet := raven.NewPacket(msg, stacktrace, httpContext)
+
+		h.app.Sentry.Client.Capture(packet, map[string]string{})
+	}
 
     // Log our error with our child logger.
     log.Root(loggergo.Data{"status_code": code}).Err(err).Error("request error")
